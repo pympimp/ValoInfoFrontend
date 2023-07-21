@@ -1,7 +1,7 @@
 import 'package:firstflutter/screen/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:firstflutter/screen/Agents.dart';
-import 'package:firstflutter/screen/Bundles.dart';
+import 'package:firstflutter/screen/Weapons.dart';
 import 'package:firstflutter/screen/HomeScreen.dart';
 import 'package:firstflutter/screen/Maps.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ValoInfo',
-      home: myHomePage(title: 'ValoInfo'),
+      // home: HomeScreen(),
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
@@ -32,41 +32,90 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => const HomeScreen(),
         Agents.routeName: (context) => const Agents(),
         Maps.routeName: (context) => const Maps(),
-        Bundles.routeName: (context) => const Bundles()
+        Weapons.routeName: (context) => const Weapons()
       },
     );
   }
 }
 
-class myHomePage extends StatefulWidget {
-  const myHomePage({super.key, required this.title});
+// class myHomePage extends StatefulWidget {
+//   const myHomePage({super.key, required this.title});
 
-  final String title;
+//   final String title;
 
-  @override
-  State<myHomePage> createState() => _myHomePageState();
-}
+//   @override
+//   State<myHomePage> createState() => _myHomePageState();
+// }
 
-class _myHomePageState extends State<myHomePage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-      fontFamily: 'SFThonburi', fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget> [
-    Text(
-      'Index 0 : Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1 : Profile',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2 : Search',
-      style: optionStyle,
-    ),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
+// class _myHomePageState extends State<myHomePage> {
+//   int _selectedIndex = 0;
+//   static const TextStyle optionStyle = TextStyle(
+//       fontFamily: 'SFThonburi', fontSize: 30, fontWeight: FontWeight.bold);
+//   static const List<Widget> _widgetOptions = <Widget>[
+//     Text(
+//       'Index 0 : Home',
+//       style: optionStyle,
+//     ),
+//     Text(
+//       'Index 1 : Profile',
+//       style: optionStyle,
+//     ),
+//     Text(
+//       'Index 2 : Search',
+//       style: optionStyle,
+//     ),
+//   ];
+
+//   void _onItemTapped(int index) {
+//     setState(() {
+//       _selectedIndex = index;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text(widget.title)),
+//       body: Center(
+//         child: _widgetOptions[_selectedIndex],
+//       ),
+//       drawer: Drawer(
+//         child: ListView(
+//           padding: EdgeInsets.zero,
+//           children: [
+//             const DrawerHeader(
+//               decoration: BoxDecoration(
+//                 color: Colors.greenAccent,
+//               ),
+//               child: Text('Test Drawer'),
+//             ),
+//             ListTile(
+//               title: const Text('Home'),
+//               selected: _selectedIndex == 0,
+//               onTap: () {
+//                 _onItemTapped(0);
+//                 Navigator.pop(context);
+//               },
+//             ),
+//             ListTile(
+//               title: const Text('Profile'),
+//               selected: _selectedIndex == 1,
+//               onTap: () {
+//                 _onItemTapped(1);
+//                 Navigator.pop(context);
+//               },
+//             ),
+//             ListTile(
+//               title: const Text('Search'),
+//               selected: _selectedIndex == 1,
+//               onTap: () {
+//                 _onItemTapped(1);
+//                 Navigator.pop(context);
+//               },
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

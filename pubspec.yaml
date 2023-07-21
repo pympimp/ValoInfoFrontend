@@ -78,6 +78,9 @@ flutter:
     - family: SFThonburi
       fonts:
         - asset: fonts/SFThonburi-Regular.ttf
+    - family: ValorantFont
+      fonts:
+        - asset: fonts/Valorant-Font.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

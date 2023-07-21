@@ -1,4 +1,4 @@
 export 'Agents.dart';
-export 'Bundles.dart';
+export 'Weapons.dart';
 export 'HomeScreen.dart';
 export 'Maps.dart';
