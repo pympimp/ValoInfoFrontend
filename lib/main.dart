@@ -1,9 +1,11 @@
+import 'package:firstflutter/screen/HomePage.dart';
 import 'package:firstflutter/screen/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:firstflutter/screen/Agents.dart';
 import 'package:firstflutter/screen/Weapons.dart';
 import 'package:firstflutter/screen/HomeScreen.dart';
 import 'package:firstflutter/screen/Maps.dart';
+
 
 // เรียกใช้ runApp ฟังก์ชันเพื่อทำการเริ่มต้นแอปพลิเคชัน
 void main() {
@@ -25,11 +27,11 @@ class MyApp extends StatelessWidget {
       title: 'ValoInfo',
       // home: HomeScreen(),
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.deepPurple,
       ),
+      home: HomePage(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
       initialRoute: '/',
       routes: {
-        HomeScreen.routeName: (context) => const HomeScreen(),
         Agents.routeName: (context) => const Agents(),
         Maps.routeName: (context) => const Maps(),
         Weapons.routeName: (context) => const Weapons()

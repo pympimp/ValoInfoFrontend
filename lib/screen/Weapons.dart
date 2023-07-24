@@ -11,6 +11,11 @@ class Weapons extends StatefulWidget {
 class _WeaponsState extends State<Weapons> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.green,
+      child: Center(
+        child: Text('Weapons Page', style: TextStyle(color: Colors.white)),
+      ),
+    );
   }
 }
