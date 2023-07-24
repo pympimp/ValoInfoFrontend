@@ -12,6 +12,9 @@ class _AgentsState extends State<Agents> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(color: Colors.green,
+      child: Center(
+        child: Text('Agents Page', style: TextStyle(color: Colors.white)),
+      ),);
   }
 }

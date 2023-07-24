@@ -11,6 +11,9 @@ class Maps extends StatefulWidget {
 class _MapsState extends State<Maps> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(color: Colors.green,
+      child: Center(
+        child: Text('Maps Page', style: TextStyle(color: Colors.white)),
+      ),);
   }
 }
