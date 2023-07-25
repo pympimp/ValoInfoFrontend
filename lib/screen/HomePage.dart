@@ -2,6 +2,8 @@
 import 'package:firstflutter/screen/Agents.dart';
 import 'package:firstflutter/screen/Weapons.dart';
 import 'package:firstflutter/screen/Maps.dart';
+import 'package:firstflutter/screen/All.dart';
+import 'package:firstflutter/screen/screens.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -146,16 +148,7 @@ class _HomePageState extends State<HomePage> {
           ),
           body: TabBarView(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.45,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Image.network(
-                  'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
+              All(),
               //ลิงก์ไปหา Agents.dart ถ้ากด Tab 2
               Agents(),
               //ลิงก์ไปหา Weapons.dart ถ้ากด Tab 3
