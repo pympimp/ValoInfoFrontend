@@ -1,16 +1,20 @@
 // ignore_for_file: prefer_const_constructors
 
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+
 class All extends StatefulWidget {
   const All({super.key});
+
 
   static const routeName = '/All';
   @override
   State<All> createState() => _AllState();
 }
+
 
 class _AllState extends State<All> {
   int activeIndex = 0;
@@ -22,6 +26,12 @@ class _AllState extends State<All> {
     'https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png',
     'https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png',
   ];
+  final urlImages2 = [
+    'https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png',
+    'https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/splash.png',
+    'https://media.valorant-api.com/maps/b529448b-4d60-346e-e89e-00a4c527a405/splash.png',
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +69,7 @@ class _AllState extends State<All> {
               ),
             ),
           ),
-          Column(
+           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipRRect(
@@ -72,7 +82,10 @@ class _AllState extends State<All> {
                     return buildImage(urlImage, index);
                   },
                   options: CarouselOptions(
-                    height: 150, // Set the desired height
+                    height: 150, 
+                    viewportFraction:0.35,
+                    enlargeCenterPage:true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.scale// Set the desired height
                   ),
                 ),
               ),
@@ -129,14 +142,18 @@ class _AllState extends State<All> {
               ClipRRect(
                 borderRadius:
                     BorderRadius.circular(20), // Set the desired border radius
-                child: CarouselSlider.builder(
-                  itemCount: urlImages.length,
+                child: 
+                CarouselSlider.builder(
+                  itemCount: urlImages2.length,
                   itemBuilder: (context, index, realIndex) {
-                    final urlImage = urlImages[index];
-                    return buildImage(urlImage, index);
+                    final urlImage2 = urlImages2[index];
+                    return buildImage(urlImage2, index);
                   },
                   options: CarouselOptions(
-                    height: 150, // Set the desired height
+                    height: 150, 
+                    viewportFraction:0.6,
+                    enlargeCenterPage:true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.zoom// Set the desired height
                   ),
                 ),
               ),
@@ -148,6 +165,15 @@ class _AllState extends State<All> {
   }
 }
 
+
 Widget buildImage(String urlImage, int index) => Container(
-    margin: EdgeInsets.symmetric(horizontal: 2),
-    child: Image.network(urlImage, fit: BoxFit.cover));
+  margin: EdgeInsets.symmetric(horizontal: 0),
+  // color: Colors.grey, // Set the desired aspect ratio (1:1 in this case)
+child: ClipRRect(
+    // borderRadius: BorderRadius.circular(20), // กำหนดความโค้งของมุมเพื่อให้มีขอบมน
+    child: Image.network(urlImage, fit: BoxFit.cover),
+  ), 
+);
+
+
+
