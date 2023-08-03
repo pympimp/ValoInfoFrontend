@@ -1,23 +1,23 @@
 // To parse this JSON data, do
 //
-//     final agents = agentsFromJson(jsonString);
+//     final agentsdata = agentsdataFromJson(jsonString);
 
 import 'dart:convert';
 
-Agents agentsFromJson(String str) => Agents.fromJson(json.decode(str));
+Agentsdata agentsdataFromJson(String str) => Agentsdata.fromJson(json.decode(str));
 
-String agentsToJson(Agents data) => json.encode(data.toJson());
+String agentsdataToJson(Agentsdata data) => json.encode(data.toJson());
 
-class Agents {
+class Agentsdata {
     int? status;
     List<Datum>? data;
 
-    Agents({
+    Agentsdata({
         this.status,
         this.data,
     });
 
-    factory Agents.fromJson(Map<String, dynamic> json) => Agents(
+    factory Agentsdata.fromJson(Map<String, dynamic> json) => Agentsdata(
         status: json["status"],
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
@@ -152,7 +152,13 @@ class Ability {
     };
 }
 
-enum Slot { ABILITY1, ABILITY2, GRENADE, ULTIMATE, PASSIVE }
+enum Slot {
+    ABILITY1,
+    ABILITY2,
+    GRENADE,
+    PASSIVE,
+    ULTIMATE
+}
 
 final slotValues = EnumValues({
     "Ability1": Slot.ABILITY1,
@@ -194,7 +200,12 @@ class Role {
     };
 }
 
-enum DisplayName { INITIATOR, SENTINEL, DUELIST, CONTROLLER }
+enum DisplayName {
+    CONTROLLER,
+    DUELIST,
+    INITIATOR,
+    SENTINEL
+}
 
 final displayNameValues = EnumValues({
     "Controller": DisplayName.CONTROLLER,
