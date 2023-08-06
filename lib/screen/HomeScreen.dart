@@ -29,20 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       
       home: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent, //ทำให้ appBar โปร่งแสง
-        //   elevation: 0, // ลบ shadow ออกจาก appBar
-        //   leading: Builder(
-        //     builder: (context) => IconButton(
-        //       icon: Icon(Icons.menu),
-        //       color: Color.fromRGBO(124, 57, 232, 100),
-        //       onPressed: () {
-        //         // Open the drawer when the menu button is pressed
-        //         Scaffold.of(context).openDrawer();
-        //       },
-        //     ),
-        //   ),
-
             //AppBar ครอบหมด
             appBar: AppBar(
             backgroundColor: Colors.transparent, //ทำให้ appBar โปร่งแสง

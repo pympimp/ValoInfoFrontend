@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Weapons extends StatefulWidget {
-  const Weapons({super.key});
+class Weapons extends StatelessWidget {
+  static const routeName = '/Agents';
+  const Weapons({Key? key}) : super(key: key);
 
-  static const routeName = '/Weapons';
-  @override
-  State<Weapons> createState() => _WeaponsState();
-}
-
-class _WeaponsState extends State<Weapons> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: Center(
-        child: Text('Weapons Page', style: TextStyle(color: Colors.white)),
+    return Scaffold(
+
+      body: Center( // ใช้ Center Widget เพื่อให้ข้อความอยู่ตรงกลางของหน้าจอ
+        child: Text(
+          'Weapons Coming Soon',
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
       ),
     );
   }

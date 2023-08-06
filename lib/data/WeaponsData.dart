@@ -1,23 +1,23 @@
 // To parse this JSON data, do
 //
-//     final weapons = weaponsFromJson(jsonString);
+//     final weaponsData = weaponsDataFromJson(jsonString);
 
 import 'dart:convert';
 
-Weapons weaponsFromJson(String str) => Weapons.fromJson(json.decode(str));
+WeaponsData weaponsDataFromJson(String str) => WeaponsData.fromJson(json.decode(str));
 
-String weaponsToJson(Weapons data) => json.encode(data.toJson());
+String weaponsDataToJson(WeaponsData data) => json.encode(data.toJson());
 
-class Weapons {
+class WeaponsData {
     int? status;
     List<Datum>? data;
 
-    Weapons({
+    WeaponsData({
         this.status,
         this.data,
     });
 
-    factory Weapons.fromJson(Map<String, dynamic> json) => Weapons(
+    factory WeaponsData.fromJson(Map<String, dynamic> json) => WeaponsData(
         status: json["status"],
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
@@ -272,7 +272,23 @@ class Level {
     };
 }
 
-enum LevelItem { E_EQUIPPABLE_SKIN_LEVEL_ITEM_HEARTBEAT_AND_MAP_SENSOR, E_EQUIPPABLE_SKIN_LEVEL_ITEM_VFX, E_EQUIPPABLE_SKIN_LEVEL_ITEM_FINISHER, E_EQUIPPABLE_SKIN_LEVEL_ITEM_ANIMATION, E_EQUIPPABLE_SKIN_LEVEL_ITEM_TRANSFORMATION, E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_EFFECT, E_EQUIPPABLE_SKIN_LEVEL_ITEM_SOUND_EFFECTS, E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_COUNTER, E_EQUIPPABLE_SKIN_LEVEL_ITEM_FISH_ANIMATION, E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_BANNER, E_EQUIPPABLE_SKIN_LEVEL_ITEM_INSPECT_AND_KILL, E_EQUIPPABLE_SKIN_LEVEL_ITEM_TOP_FRAG, E_EQUIPPABLE_SKIN_LEVEL_ITEM_ATTACKER_DEFENDER_SWAP, E_EQUIPPABLE_SKIN_LEVEL_ITEM_VOICEOVER, E_EQUIPPABLE_SKIN_LEVEL_ITEM_RANDOMIZER }
+enum LevelItem {
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_ANIMATION,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_ATTACKER_DEFENDER_SWAP,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_FINISHER,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_FISH_ANIMATION,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_HEARTBEAT_AND_MAP_SENSOR,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_INSPECT_AND_KILL,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_BANNER,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_COUNTER,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_KILL_EFFECT,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_RANDOMIZER,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_SOUND_EFFECTS,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_TOP_FRAG,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_TRANSFORMATION,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_VFX,
+    E_EQUIPPABLE_SKIN_LEVEL_ITEM_VOICEOVER
+}
 
 final levelItemValues = EnumValues({
     "EEquippableSkinLevelItem::Animation": LevelItem.E_EQUIPPABLE_SKIN_LEVEL_ITEM_ANIMATION,
@@ -416,7 +432,11 @@ class AirBurstStats {
     };
 }
 
-enum AltFireType { E_WEAPON_ALT_FIRE_DISPLAY_TYPE_ADS, E_WEAPON_ALT_FIRE_DISPLAY_TYPE_AIR_BURST, E_WEAPON_ALT_FIRE_DISPLAY_TYPE_SHOTGUN }
+enum AltFireType {
+    E_WEAPON_ALT_FIRE_DISPLAY_TYPE_ADS,
+    E_WEAPON_ALT_FIRE_DISPLAY_TYPE_AIR_BURST,
+    E_WEAPON_ALT_FIRE_DISPLAY_TYPE_SHOTGUN
+}
 
 final altFireTypeValues = EnumValues({
     "EWeaponAltFireDisplayType::ADS": AltFireType.E_WEAPON_ALT_FIRE_DISPLAY_TYPE_ADS,
@@ -476,7 +496,11 @@ class DamageRange {
     };
 }
 
-enum WallPenetration { E_WALL_PENETRATION_DISPLAY_TYPE_HIGH, E_WALL_PENETRATION_DISPLAY_TYPE_MEDIUM, E_WALL_PENETRATION_DISPLAY_TYPE_LOW }
+enum WallPenetration {
+    E_WALL_PENETRATION_DISPLAY_TYPE_HIGH,
+    E_WALL_PENETRATION_DISPLAY_TYPE_LOW,
+    E_WALL_PENETRATION_DISPLAY_TYPE_MEDIUM
+}
 
 final wallPenetrationValues = EnumValues({
     "EWallPenetrationDisplayType::High": WallPenetration.E_WALL_PENETRATION_DISPLAY_TYPE_HIGH,

@@ -16,7 +16,6 @@ class _AllState extends State<All> {
   int activeIndex = 0;
   final controller = CarouselController();
   final urlImages = [
-    
     'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png',
     'https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayicon.png',
     'https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png',
@@ -41,6 +40,7 @@ class _AllState extends State<All> {
       body: SingleChildScrollView(
           child: Column(
         children: [
+          //WingMan Big Image
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: ClipRRect(
@@ -58,6 +58,8 @@ class _AllState extends State<All> {
               ),
             ),
           ),
+
+          //Agents Topic
           Padding(
             padding: EdgeInsets.only(left: 20), // Set the desired padding value
             child: Align(
@@ -71,6 +73,8 @@ class _AllState extends State<All> {
               ),
             ),
           ),
+
+          //Agents List
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -94,6 +98,8 @@ class _AllState extends State<All> {
               ),
             ],
           ),
+
+          //Weapons Topic
           Padding(
             padding: EdgeInsets.all(20), // Set the desired padding value
             child: Align(
@@ -107,43 +113,32 @@ class _AllState extends State<All> {
               ),
             ),
           ),
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     ClipRRect(
-          //       borderRadius:
-          //           BorderRadius.circular(20), // Set the desired border radius
-          //       child: CarouselSlider.builder(
-          //         itemCount: urlImages.length,
-          //         itemBuilder: (context, index, realIndex) {
-          //           final urlImage = urlImages[index];
-          //           return buildImage(urlImage, index);
-          //         },
-          //         options: CarouselOptions(
-          //           height: 150, // Set the desired height
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
+
+          //Weapons List
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: CarouselSlider.builder(
               itemCount: urlImages3.length,
               itemBuilder: (context, index, realIndex) {
                 final urlImage3 = urlImages3[index];
-                return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(124, 57, 232, 1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Image.network(
-                    urlImage3,
-                    width: 180,
-                    height: 100,
-                    
+                return PhysicalModel(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(20),
+                  elevation:
+                      4, //
+                  shadowColor: Colors.grey.withOpacity(0.5), // Shadow color
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(124, 57, 232, 1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image.network(
+                      urlImage3,
+                      width: 180,
+                      height: 100,
+                    ),
                   ),
                 );
               },
@@ -165,6 +160,7 @@ class _AllState extends State<All> {
             ),
           ),
 
+          //Maps Topic
           Padding(
             padding: EdgeInsets.all(20), // Set the desired padding value
             child: Align(
@@ -178,6 +174,8 @@ class _AllState extends State<All> {
               ),
             ),
           ),
+
+          //Maps Lists
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -211,7 +209,8 @@ Widget buildImage(String urlImage, int index) => Container(
       margin: EdgeInsets.symmetric(horizontal: 0),
       // color: Colors.grey, // Set the desired aspect ratio (1:1 in this case)
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20), // กำหนดความโค้งของมุมเพื่อให้มีขอบมน
+        borderRadius:
+            BorderRadius.circular(20), // กำหนดความโค้งของมุมเพื่อให้มีขอบมน
         child: Image.network(urlImage, fit: BoxFit.cover),
       ),
     );
