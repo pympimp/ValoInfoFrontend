@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'package:firstflutter/screen/Agents.dart';
+import 'package:expandable_text/expandable_text.dart';
+
 
 class Agent extends StatefulWidget {
   static const routeName = '/Agent';
@@ -44,12 +48,12 @@ class _AgentState extends State<Agent> {
               padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left:10),
+                        padding: EdgeInsets.only(left: 10),
                         child: Text(
                           'Description',
                           style: TextStyle(
@@ -63,17 +67,51 @@ class _AgentState extends State<Agent> {
                     child: Text(
                       'Gekko the Angeleno leads a tight-knit crew of calamitous creatures. His buddies bound forward, scattering enemies out of the way, with Gekko chasing them down to regroup and go again',
                       style: TextStyle(fontSize: 15.5),
-                      
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10,top: 10),
+                    padding: EdgeInsets.only(left: 10, top: 10),
                     child: Row(
                       children: [
-                        Text('Skill', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                        Text(
+                          'Skill',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                   ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 40, // กำหนดขนาดของ CircleAvatar ให้ใหญ่ขึ้น
+                          backgroundColor: Color.fromRGBO(199, 244, 90, 1),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                40), // ตัดรูปเพื่อให้พอดีกับวงกลม
+                            child: Image.network(
+                              'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability1/displayicon.png', // URL ของรูปภาพจากอินเทอร์เน็ต
+                              width:
+                                  60, // กำหนดขนาดของรูปภาพให้เล็กกว่า CircleAvatar
+                              height: 60,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Wingman', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                          Text('FIRE to send Wingman for seeking enemies')
+                        ],
+                      )
+                      
+                      
+                    ],
+                  )
                 ],
               ),
             ),

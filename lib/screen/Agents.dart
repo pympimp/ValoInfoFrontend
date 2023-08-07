@@ -28,7 +28,7 @@ class _AgentsState extends State<Agents> {
 
   Future<void> getData() async {
     var url = Uri.parse('https://valorant-api.com/v1/agents');
-    var res = await get(url);
+    var res =  await get(url);
 
     setState(() {
       _data = agentsdataFromJson(res.body);
