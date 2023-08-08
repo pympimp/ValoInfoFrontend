@@ -28,7 +28,7 @@ class _AgentsState extends State<Agents> {
 
   Future<void> getData() async {
     var url = Uri.parse('https://valorant-api.com/v1/agents');
-    var res =  await get(url);
+    var res = await get(url);
 
     setState(() {
       _data = agentsdataFromJson(res.body);
@@ -70,57 +70,56 @@ class _AgentsState extends State<Agents> {
     return Expanded(
       child: GestureDetector(
         onTap: () => _onItemTapped(data?.displayName),
-        child: Container(
-          width: 170,
-          height: 170,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 231, 231, 231),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 153,
-                height: 153,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 231, 231, 231),
-                  borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(
+            width: 165,
+            height: 165,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromRGBO(212, 212, 212, 1), // สีเริ่มต้น
+                  Colors.white, // สีสุดท้าย
+                ],
+                begin: Alignment.topCenter, // จุดเริ่มต้นของเส้นเชิงเส้น
+                end: Alignment.bottomCenter, // จุดสุดท้ายของเส้นเชิงเส้น
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Stack(
+              children: [
+                Image.network(
+                  '${data?.displayIcon}',
+                  width: 180,
+                  height: 180,
+                  fit: BoxFit.cover,
                 ),
-                child: Stack(
-                  children: [
-                    Image.network(
-                      '${data?.displayIcon}',
-                      width: 180,
-                      height: 180,
-                      fit: BoxFit.cover,
+                Positioned(
+                  bottom: 5,
+                  left: 5,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.3), // สีเงา
+                        ),
+                      ],
                     ),
-                    Positioned(
-                      bottom: 5,
-                      left: 5,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4), // ระยะห่างใน Container
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 255, 1)
-                              .withOpacity(0.5), // สีพื้นหลัง
-                          borderRadius:
-                              BorderRadius.circular(8), // ความโค้งของมุม
-                        ),
-                        child: Text(
-                          '${data?.displayName}',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                    child: Text(
+                      '${data?.displayName}',
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 68, 68, 68),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
