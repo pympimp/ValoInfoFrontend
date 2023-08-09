@@ -15,23 +15,61 @@ class All extends StatefulWidget {
 class _AllState extends State<All> {
   int activeIndex = 0;
   final controller = CarouselController();
-  final urlImages = [
-    'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png',
-    'https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayicon.png',
-    'https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png',
-    'https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png',
-    'https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png',
+  final AgentsUrlText = [
+    {
+      'url':
+          'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png',
+      'text': 'Gecko'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayicon.png',
+      'text': 'Fade'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/agents/5f8d3a7f-467b-97f3-062c-13acf203c006/displayicon.png',
+      'text': 'Breach'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png',
+      'text': 'Deadlock'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png',
+      'text': 'Raze'
+    },
+    // ลบส่วนนี้ออก
   ];
+
   final urlImages2 = [
-    'https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png',
-    'https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/splash.png',
-    'https://media.valorant-api.com/maps/b529448b-4d60-346e-e89e-00a4c527a405/splash.png',
-  ];
-  final urlImages3 = [
     'https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/killstreamicon.png',
     'https://media.valorant-api.com/weapons/55d8a0f4-4274-ca67-fe2c-06ab45efdf58/killstreamicon.png',
     'https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/killstreamicon.png',
-    'https://media.valorant-api.com/weapons/ae3de142-4d85-2547-dd26-4e90bed35cf7/killstreamicon.png'
+  ];
+  final MapsUrlText = [
+    {
+      'url':
+          'https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png',
+      'text': 'Ascent'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/maps/d960549e-485c-e861-8d71-aa9d1aed12a2/splash.png',
+      'text': 'Split'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/maps/b529448b-4d60-346e-e89e-00a4c527a405/splash.png',
+      'text': 'Fracture'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/maps/2c9d57ec-4431-9c5e-2939-8f9ef6dd5cba/splash.png',
+      'text': 'Bind'
+    }
   ];
 
   @override
@@ -42,7 +80,7 @@ class _AllState extends State<All> {
         children: [
           //WingMan Big Image
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(15),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Container(
@@ -79,29 +117,28 @@ class _AllState extends State<All> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ClipRRect(
-                borderRadius:
-                    BorderRadius.circular(20), // Set the desired border radius
+                borderRadius: BorderRadius.circular(20),
                 child: CarouselSlider.builder(
-                  itemCount: urlImages.length,
-                  itemBuilder: (context, index, realIndex) {
-                    final urlImage = urlImages[index];
-                    return buildImage(urlImage, index);
-                  },
-                  options: CarouselOptions(
+                    itemCount: AgentsUrlText.length,
+                    itemBuilder: (context, index, realIndex) {
+                      final agentInfo = AgentsUrlText[index];
+                      //ใส่ ! ให้ข้อมูลเป็น Nullable ได้
+                      return buildImageWithText(
+                          agentInfo['url']!, agentInfo['text']!);
+                    },
+                    options: CarouselOptions(
                       height: 150,
                       viewportFraction: 0.35,
                       enlargeCenterPage: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy
-                          .scale // Set the desired height
-                      ),
-                ),
-              ),
+                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    )),
+              )
             ],
           ),
 
           //Weapons Topic
           Padding(
-            padding: EdgeInsets.all(20), // Set the desired padding value
+            padding: EdgeInsets.all(15), // Set the desired padding value
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -118,14 +155,13 @@ class _AllState extends State<All> {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: CarouselSlider.builder(
-              itemCount: urlImages3.length,
+              itemCount: urlImages2.length,
               itemBuilder: (context, index, realIndex) {
-                final urlImage3 = urlImages3[index];
+                final urlImage3 = urlImages2[index];
                 return PhysicalModel(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
-                  elevation:
-                      4, //
+                  elevation: 4, //
                   shadowColor: Colors.grey.withOpacity(0.5), // Shadow color
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -162,7 +198,7 @@ class _AllState extends State<All> {
 
           //Maps Topic
           Padding(
-            padding: EdgeInsets.all(20), // Set the desired padding value
+            padding: EdgeInsets.all(15), // Set the desired padding value
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -179,22 +215,25 @@ class _AllState extends State<All> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius:
-                    BorderRadius.circular(20), // Set the desired border radius
-                child: CarouselSlider.builder(
-                  itemCount: urlImages2.length,
-                  itemBuilder: (context, index, realIndex) {
-                    final urlImage2 = urlImages2[index];
-                    return buildImage(urlImage2, index);
-                  },
-                  options: CarouselOptions(
+              Padding(
+                padding:
+                    EdgeInsets.only(bottom: 20), // เพิ่ม padding ที่คุณต้องการ
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: CarouselSlider.builder(
+                    itemCount: MapsUrlText.length,
+                    itemBuilder: (context, index, realIndex) {
+                      final mapInfo = MapsUrlText[index];
+                      return buildImageWithText(
+                          mapInfo['url']!, mapInfo['text']!);
+                    },
+                    options: CarouselOptions(
                       height: 150,
                       viewportFraction: 0.7,
                       enlargeCenterPage: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy
-                          .zoom // Set the desired height
-                      ),
+                      enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -205,12 +244,36 @@ class _AllState extends State<All> {
   }
 }
 
-Widget buildImage(String urlImage, int index) => Container(
-      margin: EdgeInsets.symmetric(horizontal: 0),
-      // color: Colors.grey, // Set the desired aspect ratio (1:1 in this case)
-      child: ClipRRect(
-        borderRadius:
-            BorderRadius.circular(20), // กำหนดความโค้งของมุมเพื่อให้มีขอบมน
-        child: Image.network(urlImage, fit: BoxFit.cover),
-      ),
+Widget buildImageWithText(String urlImage, String text) => Stack(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              urlImage,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 13,
+          left: 10,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20), // แก้ตามต้องการ
+            child: Container(
+              padding: EdgeInsets.all(5),
+              color: Colors.white.withOpacity(0.5),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 56, 56, 56),
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
