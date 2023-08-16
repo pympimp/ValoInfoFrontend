@@ -6,7 +6,9 @@ import 'package:firstflutter/screen/Agent.dart';
 class Agents extends StatefulWidget {
   const Agents({super.key});
 
+  
   static const routeName = '/Agents';
+
   @override
   State<Agents> createState() => _AgentsState();
 }
@@ -34,7 +36,7 @@ class _AgentsState extends State<Agents> {
       _data = agentsdataFromJson(res.body);
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

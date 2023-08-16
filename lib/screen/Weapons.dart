@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class Weapons extends StatelessWidget {
@@ -7,15 +9,29 @@ class Weapons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: Center( // ใช้ Center Widget เพื่อให้ข้อความอยู่ตรงกลางของหน้าจอ
-        child: Text(
-          'Weapons Coming Soon',
-          style: TextStyle(
-            fontSize: 18,
-          ),
+      
+      body: 
+      Container(
+        height: 140,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            buildCard(),
+            SizedBox(width: 12),
+            buildCard(),
+            SizedBox(width: 12),
+            buildCard(),
+            SizedBox(width: 12),
+          ],
         ),
-      ),
+      )
     );
   }
 }
+
+Widget buildCard() => Container(
+  width: 200,
+  height: 200,
+  color: Colors.black,
+  //child: Image.network(''),
+);

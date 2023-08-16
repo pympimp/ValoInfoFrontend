@@ -119,6 +119,7 @@ class _AllState extends State<All> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: CarouselSlider.builder(
+                  
                     itemCount: AgentsUrlText.length,
                     itemBuilder: (context, index, realIndex) {
                       final agentInfo = AgentsUrlText[index];
