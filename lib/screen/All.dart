@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firstflutter/screen/Agent.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -119,13 +120,26 @@ class _AllState extends State<All> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: CarouselSlider.builder(
-                  
                     itemCount: AgentsUrlText.length,
                     itemBuilder: (context, index, realIndex) {
                       final agentInfo = AgentsUrlText[index];
                       //ใส่ ! ให้ข้อมูลเป็น Nullable ได้
-                      return buildImageWithText(
-                          agentInfo['url']!, agentInfo['text']!);
+                      return InkWell(
+                        //Link ไปยังหน้า Agent
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Agent(agentsName: agentInfo['text']),
+                            ),
+                          );
+                        },
+                        child: buildImageWithText(
+                          agentInfo['url']!,
+                          agentInfo['text']!,
+                        ),
+                      );
                     },
                     options: CarouselOptions(
                       height: 150,
