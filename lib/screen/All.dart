@@ -45,10 +45,22 @@ class _AllState extends State<All> {
     // ลบส่วนนี้ออก
   ];
 
-  final urlImages2 = [
-    'https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/killstreamicon.png',
-    'https://media.valorant-api.com/weapons/55d8a0f4-4274-ca67-fe2c-06ab45efdf58/killstreamicon.png',
-    'https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/killstreamicon.png',
+  final weaponsUrlText = [
+    {
+      'url':
+          'https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/killstreamicon.png',
+      'text': 'Odin'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/weapons/55d8a0f4-4274-ca67-fe2c-06ab45efdf58/killstreamicon.png',
+      'text': 'Ares'
+    },
+    {
+      'url':
+          'https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/killstreamicon.png',
+      'text': 'Vandal'
+    },
   ];
   final MapsUrlText = [
     {
@@ -170,27 +182,23 @@ class _AllState extends State<All> {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: CarouselSlider.builder(
-              itemCount: urlImages2.length,
+              itemCount: weaponsUrlText.length,
               itemBuilder: (context, index, realIndex) {
-                final urlImage3 = urlImages2[index];
+                final weaponInfo = weaponsUrlText[index];
                 return PhysicalModel(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
                   elevation: 4, //
                   shadowColor: Colors.grey.withOpacity(0.5), // Shadow color
                   child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(124, 57, 232, 1),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Image.network(
-                      urlImage3,
-                      width: 180,
-                      height: 100,
-                    ),
-                  ),
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(124, 57, 232, 1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child:
+                          buildCard(weaponInfo['url']!, weaponInfo['text']!)),
                 );
               },
               options: CarouselOptions(
@@ -291,4 +299,44 @@ Widget buildImageWithText(String urlImage, String text) => Stack(
           ),
         )
       ],
+    );
+
+Widget buildCard(String urlImage, String text) => Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Container(
+        child: Stack(
+          children: [
+            Image.network(
+              urlImage,
+              width: 300,
+              height: 165,
+            ),
+            Positioned(
+              bottom: 5,
+              left: 5,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255)
+                          .withOpacity(0.3), // สีเงา
+                    ),
+                  ],
+                ),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 68, 68, 68),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
