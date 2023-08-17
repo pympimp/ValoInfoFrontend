@@ -23,12 +23,13 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       // สร้าง MaterialApp และกำหนด theme ที่นี่
       theme: ThemeData(
+        brightness: isSwitched ? Brightness.dark : Brightness.light,
         textTheme: TextTheme(
           bodyText1: TextStyle(
-            fontFamily: 'SFThonburi', // กำหนดฟอนต์เป็น 'SFThonburi'
+            fontFamily: 'SFThonburi',
           ),
           bodyText2: TextStyle(
-            fontFamily: 'SFThonburi', // กำหนดฟอนต์เป็น 'SFThonburi'
+            fontFamily: 'SFThonburi',
           ),
         ),
       ),
@@ -55,9 +56,11 @@ class _HomePageState extends State<HomePage> {
                     isSwitched = value;
                   });
                 },
-                activeColor: Color.fromRGBO(111, 144, 30, 1),
+                //activeColor: Color.fromRGBO(111, 144, 30, 1),
+                activeColor: Color.fromRGBO(124, 57, 232, 1),
                 inactiveThumbColor: Color.fromRGBO(124, 57, 232, 1),
-                activeTrackColor: Color.fromRGBO(199, 244, 90, 1),
+                //activeTrackColor: Color.fromRGBO(199, 244, 90, 1),
+                activeTrackColor: Color.fromRGBO(222, 213, 235, 1),
                 inactiveTrackColor: Color.fromRGBO(222, 213, 235, 1),
               ),
             ],
