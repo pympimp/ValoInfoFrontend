@@ -316,21 +316,11 @@ Widget buildCard(String urlImage, String text) => Padding(
               left: 5,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255)
-                          .withOpacity(0.3), // สีเงา
-                    ),
-                  ],
-                ),
                 child: Text(
                   text,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 68, 68, 68),
-                    fontSize: 13,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
