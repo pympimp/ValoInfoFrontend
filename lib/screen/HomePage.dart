@@ -67,16 +67,24 @@ class _HomePageState extends State<HomePage> {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  child: Text('All', style: TextStyle(color: Colors.black)),
+                  child: Text('All',
+                      style: TextStyle(
+                          color: isSwitched ? Colors.white : Colors.black)),
                 ),
                 Tab(
-                  child: Text('Agents', style: TextStyle(color: Colors.black)),
+                  child: Text('Agents',
+                      style: TextStyle(
+                          color: isSwitched ? Colors.white : Colors.black)),
                 ),
                 Tab(
-                  child: Text('Weapons', style: TextStyle(color: Colors.black)),
+                  child: Text('Weapons',
+                      style: TextStyle(
+                          color: isSwitched ? Colors.white : Colors.black)),
                 ),
                 Tab(
-                  child: Text('Maps', style: TextStyle(color: Colors.black)),
+                  child: Text('Maps',
+                      style: TextStyle(
+                          color: isSwitched ? Colors.white : Colors.black)),
                 ),
               ],
               indicator: UnderlineTabIndicator(

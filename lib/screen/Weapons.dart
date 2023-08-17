@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class Weapons extends StatelessWidget {
-  static const routeName = '/Agents';
+  static const routeName = '/Weapons';
   const Weapons({Key? key}) : super(key: key);
 
   @override
