@@ -1,23 +1,23 @@
 // To parse this JSON data, do
 //
-//     final maps = mapsFromJson(jsonString);
+//     final mapsData = mapsDataFromJson(jsonString);
 
 import 'dart:convert';
 
-Maps mapsFromJson(String str) => Maps.fromJson(json.decode(str));
+MapsData mapsDataFromJson(String str) => MapsData.fromJson(json.decode(str));
 
-String mapsToJson(Maps data) => json.encode(data.toJson());
+String mapsDataToJson(MapsData data) => json.encode(data.toJson());
 
-class Maps {
+class MapsData {
     int? status;
     List<Datum>? data;
 
-    Maps({
+    MapsData({
         this.status,
         this.data,
     });
 
-    factory Maps.fromJson(Map<String, dynamic> json) => Maps(
+    factory MapsData.fromJson(Map<String, dynamic> json) => MapsData(
         status: json["status"],
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
@@ -31,6 +31,8 @@ class Maps {
 class Datum {
     String? uuid;
     String? displayName;
+    String? narrativeDescription;
+    TacticalDescription? tacticalDescription;
     String? coordinates;
     String? displayIcon;
     String? listViewIcon;
@@ -46,6 +48,8 @@ class Datum {
     Datum({
         this.uuid,
         this.displayName,
+        this.narrativeDescription,
+        this.tacticalDescription,
         this.coordinates,
         this.displayIcon,
         this.listViewIcon,
@@ -62,6 +66,8 @@ class Datum {
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         uuid: json["uuid"],
         displayName: json["displayName"],
+        narrativeDescription: json["narrativeDescription"],
+        tacticalDescription: tacticalDescriptionValues.map[json["tacticalDescription"]],
         coordinates: json["coordinates"],
         displayIcon: json["displayIcon"],
         listViewIcon: json["listViewIcon"],
@@ -78,6 +84,8 @@ class Datum {
     Map<String, dynamic> toJson() => {
         "uuid": uuid,
         "displayName": displayName,
+        "narrativeDescription": narrativeDescription,
+        "tacticalDescription": tacticalDescriptionValues.reverse[tacticalDescription],
         "coordinates": coordinates,
         "displayIcon": displayIcon,
         "listViewIcon": listViewIcon,
@@ -136,7 +144,14 @@ class Location {
     };
 }
 
-enum SuperRegionName { A, ATTACKER_SIDE, B, MID, DEFENDER_SIDE, C }
+enum SuperRegionName {
+    A,
+    ATTACKER_SIDE,
+    B,
+    C,
+    DEFENDER_SIDE,
+    MID
+}
 
 final superRegionNameValues = EnumValues({
     "A": SuperRegionName.A,
@@ -145,6 +160,16 @@ final superRegionNameValues = EnumValues({
     "C": SuperRegionName.C,
     "Defender Side": SuperRegionName.DEFENDER_SIDE,
     "Mid": SuperRegionName.MID
+});
+
+enum TacticalDescription {
+    A_B_C_SITES,
+    A_B_SITES
+}
+
+final tacticalDescriptionValues = EnumValues({
+    "A/B/C Sites": TacticalDescription.A_B_C_SITES,
+    "A/B Sites": TacticalDescription.A_B_SITES
 });
 
 class EnumValues<T> {

@@ -22,12 +22,12 @@ class _WeaponsState extends State<Weapons> {
   var weaponsName = [];
 
   void _onItemTapped(item) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Agent(
-                  agentsName: item,
-                )));
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => Agent(
+    //               agentsName: item,
+    //             )));
   }
 
   void initState() {
