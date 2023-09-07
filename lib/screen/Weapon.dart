@@ -11,6 +11,8 @@ class Weapon extends StatefulWidget {
 class _WeaponState extends State<Weapon> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.white,
+    );
   }
 }

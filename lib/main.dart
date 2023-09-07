@@ -1,4 +1,5 @@
 import 'package:firstflutter/screen/HomePage.dart';
+import 'package:firstflutter/screen/Weapon.dart';
 import 'package:firstflutter/screen/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:firstflutter/screen/Agents.dart';
@@ -7,6 +8,7 @@ import 'package:firstflutter/screen/HomeScreen.dart';
 import 'package:firstflutter/screen/Maps.dart';
 import 'package:firstflutter/screen/All.dart';
 import 'package:firstflutter/screen/Agent.dart';
+import 'package:firstflutter/screen/Map.dart';
 
 
 // เรียกใช้ runApp ฟังก์ชันเพื่อทำการเริ่มต้นแอปพลิเคชัน
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: HomePage(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
+      home: Weapon(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
       initialRoute: '/',
       routes: {
         All.routeName:(context) => const All(),

@@ -59,7 +59,8 @@ class _WeaponsState extends State<Weapons> {
   }
 
   Widget _buildWeaponCard(Datum weapon) {
-    return Padding(
+    return 
+    Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 2),
       child: Container(
         width: 150, // ปรับขนาดตามที่ต้องการ
