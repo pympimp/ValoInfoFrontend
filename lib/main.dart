@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ValoInfo',
-      // home: HomeScreen(),
+      // home: HomeScreen(),\
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),

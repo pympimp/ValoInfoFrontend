@@ -256,7 +256,7 @@ class Level {
     factory Level.fromJson(Map<String, dynamic> json) => Level(
         uuid: json["uuid"],
         displayName: json["displayName"],
-        levelItem: levelItemValues.map[json["levelItem"]]!,
+        levelItem: levelItemValues.map[json["levelItem"]],
         displayIcon: json["displayIcon"],
         streamedVideo: json["streamedVideo"],
         assetPath: json["assetPath"],
@@ -354,7 +354,7 @@ class WeaponStats {
         wallPenetration: wallPenetrationValues.map[json["wallPenetration"]]!,
         feature: json["feature"],
         fireMode: json["fireMode"],
-        altFireType: altFireTypeValues.map[json["altFireType"]]!,
+        altFireType: altFireTypeValues.map[json["altFireType"]],
         adsStats: json["adsStats"] == null ? null : AdsStats.fromJson(json["adsStats"]),
         altShotgunStats: json["altShotgunStats"] == null ? null : AltShotgunStats.fromJson(json["altShotgunStats"]),
         airBurstStats: json["airBurstStats"] == null ? null : AirBurstStats.fromJson(json["airBurstStats"]),
