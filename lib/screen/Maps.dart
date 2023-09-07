@@ -61,15 +61,15 @@ class _MapsState extends State<Maps> {
         children: [
           // ส่วนของ killStreamIcon
           Padding(
-              padding: const EdgeInsets.only(left: 4, right: 4,top: 5),
-              child: Align(
-                alignment: Alignment.center,
+              padding: const EdgeInsets.only(left: 4, right: 4, top: 5),
+              child: CustomPaint(
+                painter: InnerShadowPainter(),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15), // ปรับขนาดขอบ
+                  borderRadius: BorderRadius.circular(15),
                   child: Image.network(
                     weapon.splash ?? '',
-                    width: 800,
-                    height: 180,
+                    width: 400,
+                    height: 160,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -94,5 +94,27 @@ class _MapsState extends State<Maps> {
         ],
       ),
     );
+  }
+}
+
+class InnerShadowPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = Colors.black.withOpacity(0.4)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 5);
+
+    final Path path = Path()
+      ..addRRect(RRect.fromRectAndRadius(
+          Rect.fromPoints(Offset(0, 0), Offset(size.width, size.height)),
+          Radius.circular(15)))
+      ..fillType = PathFillType.evenOdd;
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

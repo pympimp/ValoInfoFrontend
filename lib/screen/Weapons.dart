@@ -68,7 +68,7 @@ class _WeaponsState extends State<Weapons> {
           gradient: LinearGradient(
             colors: [
               Color.fromRGBO(124, 57, 232, 1), // สีเริ่มต้น
-              Color.fromARGB(255, 51, 51, 51), // สีสุดท้าย
+              Color.fromARGB(255, 58, 58, 58), // สีสุดท้าย
             ],
             begin: Alignment.topCenter, // จุดเริ่มต้นของเส้นเชิงเส้น
             end: Alignment.bottomCenter, // จุดสุดท้ายของเส้นเชิงเส้น
@@ -96,8 +96,8 @@ class _WeaponsState extends State<Weapons> {
 
             // ส่วนของ displayName
             Positioned(
-              bottom: 0, // ระยะห่างจากด้านล่าง
-              left: 0, // ระยะห่างจากด้านซ้าย
+              bottom: 10, // ระยะห่างจากด้านล่าง
+              left: 10, // ระยะห่างจากด้านซ้าย
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
