@@ -14,7 +14,6 @@ class _MapState extends State<Map> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -35,7 +34,7 @@ class _MapState extends State<Map> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 80.0, left: 30, right: 30),
+              padding: const EdgeInsets.only(left: 30, right: 30),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Center(
