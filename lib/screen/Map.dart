@@ -3,8 +3,10 @@ import 'package:firstflutter/screen/Maps.dart';
 import 'package:firstflutter/data/MapsData.dart';
 
 class Map extends StatefulWidget {
-  const Map({super.key});
+  Map({Key? key, required this.map}) : super(key: key);
   static const routeName = '/Map';
+
+  final Datum map;
   @override
   State<Map> createState() => _MapState();
 }
@@ -12,6 +14,7 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
+    final map = widget.map;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
@@ -21,8 +24,8 @@ class _MapState extends State<Map> {
           color: Color.fromRGBO(0, 0, 0, 1),
         ),
         centerTitle: true,
-        title: const Text(
-          'Map',
+        title: Text(
+          widget.map.displayName ?? '',
           style: TextStyle(
             color: Color.fromRGBO(0, 0, 0, 1),
             fontSize: 18,
@@ -42,7 +45,7 @@ class _MapState extends State<Map> {
                     width: 400,
                     height: 200,
                     child: Image.network(
-                      'https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png',
+                      '${widget.map.splash}',
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -61,10 +64,10 @@ class _MapState extends State<Map> {
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis sed quam sed posuere. Vivamus tristique sapien quis tellus tincidunt interdum. Etiam non auctor justo, at porta diam. Vivamus cursus ligula vitae urna pretium, quis mollis leo dictum.'),
+                    Text('${widget.map.narrativeDescription}'),
                   ],
                 ),
               ),
@@ -81,10 +84,10 @@ class _MapState extends State<Map> {
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis sed quam sed posuere. Vivamus tristique sapien quis tellus tincidunt interdum. Etiam non auctor justo, at porta diam. Vivamus cursus ligula vitae urna pretium, quis mollis leo dictum.'),
+                    Text('${widget.map.narrativeDescription}'),
                   ],
                 ),
               ),
@@ -101,12 +104,12 @@ class _MapState extends State<Map> {
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Center(
                       child: Image.network(
-                        'https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/displayicon.png',
+                        '${widget.map.displayIcon}',
                         height: 300,
                       ),
                     ),

@@ -85,6 +85,8 @@ class _AllState extends State<All> {
     }
   ];
 
+  get agent => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,15 +140,15 @@ class _AllState extends State<All> {
                       //ใส่ ! ให้ข้อมูลเป็น Nullable ได้
                       return InkWell(
                         //Link ไปยังหน้า Agent
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  Agent(agentsName: agentInfo['text']),
-                            ),
-                          );
-                        },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => Agent(agent: agent),
+                        //     ),
+                        //   );
+                        // },
+
                         child: buildImageWithText(
                           agentInfo['url']!,
                           agentInfo['text']!,

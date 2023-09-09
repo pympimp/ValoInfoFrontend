@@ -21,14 +21,14 @@ class _WeaponsState extends State<Weapons> {
 
   var weaponsName = [];
 
-  void _onItemTapped(item) {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => Agent(
-    //               agentsName: item,
-    //             )));
-  }
+void _onItemTapped(Datum weapon) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Weapon(weapon: weapon),
+    ),
+  );
+}
 
   void initState() {
     super.initState();
@@ -59,8 +59,11 @@ class _WeaponsState extends State<Weapons> {
   }
 
   Widget _buildWeaponCard(Datum weapon) {
-    return 
-    Padding(
+    return GestureDetector(
+    onTap: () {
+      _onItemTapped(weapon);
+    },
+    child: Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 2),
       child: Container(
         width: 150, // ปรับขนาดตามที่ต้องการ
@@ -114,6 +117,6 @@ class _WeaponsState extends State<Weapons> {
           ],
         ),
       ),
-    );
+    ),);
   }
 }

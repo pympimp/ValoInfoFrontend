@@ -1,25 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:firstflutter/data/AgentsData.dart';
+import 'package:http/http.dart';
 
 class Agent extends StatefulWidget {
   static const routeName = '/Agent';
 
-  static Future<void> NavigatorPush(BuildContext context) async {
-    return Navigator.push<void>(
-      context,
-      MaterialPageRoute(builder: (_) => Agent()),
-    );
-  }
+  // static Future<void> NavigatorPush(BuildContext context) async {
+  //   return Navigator.push<void>(
+  //     context,
+  //     MaterialPageRoute(builder: (_) => Agent()),
+  //   );
+  // }
 
+  final Datum agent;
   var agentsName;
-  Agent({super.key, this.agentsName});
+  Agent({Key? key, required this.agent}) : super(key: key);
 
   @override
   State<Agent> createState() => _AgentState();
 }
 
 class _AgentState extends State<Agent> {
+  Agentsdata? _data;
+
+  var agentsName = [];
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+  
+  Future<void> getData() async {
+    var url = Uri.parse('https://valorant-api.com/v1/agents');
+    var res = await get(url);
+
+    setState(() {
+      _data = agentsdataFromJson(res.body);
+    });
+  }
   @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
+  final agent = widget.agent;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(124, 57, 232, 1),
       extendBodyBehindAppBar: true,
@@ -48,16 +69,16 @@ class _AgentState extends State<Agent> {
                   color: const Color.fromRGBO(199, 244, 90, 1),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
-                  'Initiator',
+                child: Text(
+                  'T',
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ),
-              const Positioned(
+              Positioned(
                 left: 15, // ปรับตำแหน่งตามความต้องการ
                 bottom: 45, // ปรับตำแหน่งตามความต้องการ
                 child: Text(
-                  'Gecko',
+                  'T',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
@@ -85,7 +106,7 @@ class _AgentState extends State<Agent> {
                         Padding(
                           padding: EdgeInsets.only(left: 10),
                           child: Text(
-                            'Description',
+                            'DescriptionT',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -95,10 +116,10 @@ class _AgentState extends State<Agent> {
                         ),
                       ],
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(top: 10, left: 10),
                       child: Text(
-                        'Gekko the Angeleno leads a tight-knit crew of calamitous creatures. His buddies bound forward, scattering enemies out of the way, with Gekko chasing them down to regroup and go again',
+                        '${agent.description}',
                         style: TextStyle(fontSize: 15.5, color: Color.fromARGB(255, 85, 85, 85)),
                       ),
                     ),

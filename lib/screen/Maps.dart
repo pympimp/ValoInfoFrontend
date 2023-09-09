@@ -17,13 +17,12 @@ class _MapsState extends State<Maps> {
 
   var mapsName = [];
 
-  void _onItemTapped(item) {
-    // Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => Agent(
-    //               agentsName: item,
-    //             )));
+  void _onItemTapped(Datum map) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Map(map: map),
+      ),
+    );
   }
 
   void initState() {
@@ -45,17 +44,19 @@ class _MapsState extends State<Maps> {
     return ListView.builder(
       itemCount: _data?.data?.length ?? 0,
       itemBuilder: (BuildContext context, int index) {
-        final weapon = _data!.data![index];
+        final map = _data!.data![index];
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: _buildWeaponCard(weapon),
+          child: _buildMapCard(map),
         );
       },
     );
   }
 
-  Widget _buildWeaponCard(Datum weapon) {
-    return Padding(
+  Widget _buildMapCard(Datum map) {
+    return GestureDetector(
+  onTap: () => _onItemTapped(map),
+  child :Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: Stack(
         children: [
@@ -67,7 +68,7 @@ class _MapsState extends State<Maps> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.network(
-                    weapon.splash ?? '',
+                    map.splash ?? '',
                     width: 400,
                     height: 160,
                     fit: BoxFit.cover,
@@ -82,7 +83,7 @@ class _MapsState extends State<Maps> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                weapon.displayName ?? '', // แสดงชื่ออาวุธ
+                map.displayName ?? '', // แสดงชื่ออาวุธ
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -93,6 +94,7 @@ class _MapsState extends State<Maps> {
           ),
         ],
       ),
+    ),
     );
   }
 }

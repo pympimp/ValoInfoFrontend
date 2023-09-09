@@ -1,11 +1,14 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:firstflutter/data/WeaponsData.dart';
 
 class Weapon extends StatefulWidget {
   static const routeName = '/Weapon';
-  const Weapon({super.key});
 
+  Weapon({Key? key, required this.weapon}) : super(key: key);
+
+  final Datum weapon; // เพิ่มพารามิเตอร์ weapon
   @override
   State<Weapon> createState() => _WeaponState();
 }
@@ -13,6 +16,7 @@ class Weapon extends StatefulWidget {
 class _WeaponState extends State<Weapon> {
   @override
   Widget build(BuildContext context) {
+    final weapon = widget.weapon;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
@@ -22,8 +26,8 @@ class _WeaponState extends State<Weapon> {
           color: Color.fromRGBO(0, 0, 0, 1),
         ),
         centerTitle: true,
-        title: const Text(
-          'Weapon',
+        title: Text(
+          widget.weapon.displayName ?? '',
           style: TextStyle(
             color: Color.fromRGBO(0, 0, 0, 1),
             fontSize: 18,
@@ -71,41 +75,49 @@ class _WeaponState extends State<Weapon> {
                         Row(
                           children: [
                             Text('Cost : ', style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.shopData?.cost}',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Category : ', style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.shopData?.category}',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Fire Rate : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStats?.fireRate}',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Magazine Size : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStats?.magazineSize}',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Equip Time : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text(
+                                '${widget.weapon.weaponStats?.equipTimeSeconds} s',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Reload Time : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('data', style: TextStyle(fontSize: 18))
+                            Text(
+                                '${widget.weapon.weaponStats?.reloadTimeSeconds} s',
+                                style: TextStyle(fontSize: 18))
                           ],
                         ),
                       ],
@@ -153,19 +165,25 @@ class _WeaponState extends State<Weapon> {
                           Row(
                             children: [
                               Text('Head : ', style: TextStyle(fontSize: 18)),
-                              Text('data', style: TextStyle(fontSize: 18)),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.first?.headDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Body : ', style: TextStyle(fontSize: 18)),
-                              Text('data', style: TextStyle(fontSize: 18)),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.first?.bodyDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Leg : ', style: TextStyle(fontSize: 18)),
-                              Text('data', style: TextStyle(fontSize: 18)),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.first?.legDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                           Padding(
@@ -179,19 +197,25 @@ class _WeaponState extends State<Weapon> {
                           Row(
                             children: [
                               Text('Head : ', style: TextStyle(fontSize: 18)),
-                              Text('data'),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.last?.headDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Body : ', style: TextStyle(fontSize: 18)),
-                              Text('data'),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.last?.bodyDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Leg : ', style: TextStyle(fontSize: 18)),
-                              Text('data', style: TextStyle(fontSize: 18)),
+                              Text(
+                                  '${widget.weapon.weaponStats?.damageRanges?.last?.legDamage ?? 'N/A'}',
+                                  style: TextStyle(fontSize: 18)),
                             ],
                           ),
                         ],
@@ -218,7 +242,7 @@ class _WeaponState extends State<Weapon> {
                       spreadRadius:
                           5, // รัศมีการกระจายของเงา (ให้เป็นค่าลบเพื่อให้เงาเป็น inner shadow)
                       blurRadius: 10, // ความเบลอของเงา
-                       // ตำแหน่งเงา (ให้เงาอยู่ด้านบน)
+                      // ตำแหน่งเงา (ให้เงาอยู่ด้านบน)
                     ),
                   ],
                 ),
@@ -229,7 +253,7 @@ class _WeaponState extends State<Weapon> {
                     children: [
                       Center(
                         child: Image.network(
-                          'https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/displayicon.png',
+                          '${widget.weapon.displayIcon}',
                           height: 290,
                         ),
                       ),

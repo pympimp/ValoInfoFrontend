@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home:Weapon(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
+      home:HomePage(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
       initialRoute: '/',
       routes: {
         All.routeName:(context) => const All(),

@@ -5,8 +5,6 @@ import 'package:firstflutter/screen/Agent.dart';
 
 class Agents extends StatefulWidget {
   const Agents({super.key});
-
-  
   static const routeName = '/Agents';
 
   @override
@@ -18,9 +16,12 @@ class _AgentsState extends State<Agents> {
 
   var agentsName = [];
 
-  void _onItemTapped(item) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => Agent(agentsName: item)));
+  void _onItemTapped(Datum agent) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Agent(agent: agent),
+      ),
+    );
   }
 
   void initState() {
@@ -36,10 +37,11 @@ class _AgentsState extends State<Agents> {
       _data = agentsdataFromJson(res.body);
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    Scaffold(
       body: ListView.builder(
         itemCount: (_data?.data?.length ?? 0) ~/ 2, // หาจำนวนครึ่งของข้อมูล
         itemBuilder: (BuildContext context, int index) {
@@ -53,7 +55,7 @@ class _AgentsState extends State<Agents> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0), // เพิ่ม padding ที่นี่
-                child: _buildAgentCard(firstData),
+                child: _buildAgentCard(firstData!),
               ),
               SizedBox(width: 5), // ระยะห่างระหว่าง 2 Agent Card
               if (secondData != null)
@@ -68,10 +70,10 @@ class _AgentsState extends State<Agents> {
     );
   }
 
-  Widget _buildAgentCard(Datum? data) {
+  Widget _buildAgentCard(Datum agent) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => _onItemTapped(data?.displayName),
+        onTap: () => _onItemTapped(agent),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Container(
@@ -91,7 +93,7 @@ class _AgentsState extends State<Agents> {
             child: Stack(
               children: [
                 Image.network(
-                  '${data?.displayIcon}',
+                  '${agent?.displayIcon}',
                   width: 180,
                   height: 180,
                   fit: BoxFit.cover,
@@ -106,12 +108,13 @@ class _AgentsState extends State<Agents> {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.3), // สีเงา
+                          color: const Color.fromARGB(255, 255, 255, 255)
+                              .withOpacity(0.3), // สีเงา
                         ),
                       ],
                     ),
                     child: Text(
-                      '${data?.displayName}',
+                      '${agent?.displayName}',
                       style: TextStyle(
                         color: const Color.fromARGB(255, 68, 68, 68),
                         fontSize: 13,
