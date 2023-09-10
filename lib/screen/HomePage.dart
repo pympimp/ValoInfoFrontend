@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
           ),
           body: TabBarView(
             children: [
-              All(),
+              News(),
               //ลิงก์ไปหา Agents.dart ถ้ากด Tab 2
               Agents(),
               //ลิงก์ไปหา Weapons.dart ถ้ากด Tab 3

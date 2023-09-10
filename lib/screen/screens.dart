@@ -4,3 +4,7 @@ export 'HomePage.dart';
 export 'Maps.dart';
 export 'All.dart';
 export 'Agent.dart';
+export 'Weapon.dart';
+export 'Map.dart';
+export 'News.dart';
+export 'New.dart';

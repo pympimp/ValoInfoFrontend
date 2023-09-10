@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       home:HomePage(), //กำหนดให้ HomeScreen เป็นหน้าหลัก
       initialRoute: '/',
       routes: {
-        All.routeName:(context) => const All(),
+        All.routeName:(context) => const News(),
         Agents.routeName: (context) => const Agents(),
         Maps.routeName: (context) => const Maps(),
         Weapons.routeName: (context) => const Weapons()
