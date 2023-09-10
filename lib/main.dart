@@ -9,6 +9,7 @@ import 'package:firstflutter/screen/Maps.dart';
 import 'package:firstflutter/screen/All.dart';
 import 'package:firstflutter/screen/Agent.dart';
 import 'package:firstflutter/screen/Map.dart';
+import 'package:firstflutter/screen/News.dart';
 
 
 // เรียกใช้ runApp ฟังก์ชันเพื่อทำการเริ่มต้นแอปพลิเคชัน

@@ -60,14 +60,14 @@ class _MapState extends State<Map> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Features',
+                      'Description',
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text('${widget.map.narrativeDescription}'),
+                    Text('${widget.map.mapGuide}'),
                   ],
                 ),
               ),
@@ -80,7 +80,7 @@ class _MapState extends State<Map> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Description',
+                      'Map Guide',
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
@@ -109,7 +109,7 @@ class _MapState extends State<Map> {
                     ),
                     Center(
                       child: Image.network(
-                        '${widget.map.displayIcon}',
+                        '${widget.map.miniMap}',
                         height: 300,
                       ),
                     ),

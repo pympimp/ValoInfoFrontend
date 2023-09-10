@@ -1,266 +1,162 @@
 // To parse this JSON data, do
 //
-//     final agentsdata = agentsdataFromJson(jsonString);
+//     final agentsData = agentsDataFromJson(jsonString);
 
 import 'dart:convert';
 
-Agentsdata agentsdataFromJson(String str) => Agentsdata.fromJson(json.decode(str));
+AgentsData agentsDataFromJson(String str) => AgentsData.fromJson(json.decode(str));
 
-String agentsdataToJson(Agentsdata data) => json.encode(data.toJson());
+String agentsDataToJson(AgentsData data) => json.encode(data.toJson());
 
-class Agentsdata {
-    int? status;
+class AgentsData {
     List<Datum>? data;
 
-    Agentsdata({
-        this.status,
+    AgentsData({
         this.data,
     });
 
-    factory Agentsdata.fromJson(Map<String, dynamic> json) => Agentsdata(
-        status: json["status"],
+    factory AgentsData.fromJson(Map<String, dynamic> json) => AgentsData(
         data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "status": status,
         "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
     };
 }
 
 class Datum {
-    String? uuid;
+    Role? role;
+    String? id;
     String? displayName;
     String? description;
-    String? developerName;
-    List<String>? characterTags;
     String? displayIcon;
     String? displayIconSmall;
-    String? bustPortrait;
-    String? fullPortrait;
-    String? fullPortraitV2;
-    String? killfeedPortrait;
-    String? background;
-    List<String>? backgroundGradientColors;
-    String? assetPath;
-    bool? isFullPortraitRightFacing;
-    bool? isPlayableCharacter;
-    bool? isAvailableForTest;
-    bool? isBaseContent;
-    Role? role;
     List<Ability>? abilities;
-    VoiceLine? voiceLine;
+    String? fullPortrait;
+    String? background;
 
     Datum({
-        this.uuid,
+        this.role,
+        this.id,
         this.displayName,
         this.description,
-        this.developerName,
-        this.characterTags,
         this.displayIcon,
         this.displayIconSmall,
-        this.bustPortrait,
-        this.fullPortrait,
-        this.fullPortraitV2,
-        this.killfeedPortrait,
-        this.background,
-        this.backgroundGradientColors,
-        this.assetPath,
-        this.isFullPortraitRightFacing,
-        this.isPlayableCharacter,
-        this.isAvailableForTest,
-        this.isBaseContent,
-        this.role,
         this.abilities,
-        this.voiceLine,
+        this.fullPortrait,
+        this.background,
     });
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        uuid: json["uuid"],
+        role: json["role"] == null ? null : Role.fromJson(json["role"]),
+        id: json["_id"],
         displayName: json["displayName"],
         description: json["description"],
-        developerName: json["developerName"],
-        characterTags: json["characterTags"] == null ? [] : List<String>.from(json["characterTags"]!.map((x) => x)),
         displayIcon: json["displayIcon"],
         displayIconSmall: json["displayIconSmall"],
-        bustPortrait: json["bustPortrait"],
-        fullPortrait: json["fullPortrait"],
-        fullPortraitV2: json["fullPortraitV2"],
-        killfeedPortrait: json["killfeedPortrait"],
-        background: json["background"],
-        backgroundGradientColors: json["backgroundGradientColors"] == null ? [] : List<String>.from(json["backgroundGradientColors"]!.map((x) => x)),
-        assetPath: json["assetPath"],
-        isFullPortraitRightFacing: json["isFullPortraitRightFacing"],
-        isPlayableCharacter: json["isPlayableCharacter"],
-        isAvailableForTest: json["isAvailableForTest"],
-        isBaseContent: json["isBaseContent"],
-        role: json["role"] == null ? null : Role.fromJson(json["role"]),
         abilities: json["abilities"] == null ? [] : List<Ability>.from(json["abilities"]!.map((x) => Ability.fromJson(x))),
-        voiceLine: json["voiceLine"] == null ? null : VoiceLine.fromJson(json["voiceLine"]),
+        fullPortrait: json["fullPortrait"],
+        background: json["background"],
     );
 
     Map<String, dynamic> toJson() => {
-        "uuid": uuid,
+        "role": role?.toJson(),
+        "_id": id,
         "displayName": displayName,
         "description": description,
-        "developerName": developerName,
-        "characterTags": characterTags == null ? [] : List<dynamic>.from(characterTags!.map((x) => x)),
         "displayIcon": displayIcon,
         "displayIconSmall": displayIconSmall,
-        "bustPortrait": bustPortrait,
-        "fullPortrait": fullPortrait,
-        "fullPortraitV2": fullPortraitV2,
-        "killfeedPortrait": killfeedPortrait,
-        "background": background,
-        "backgroundGradientColors": backgroundGradientColors == null ? [] : List<dynamic>.from(backgroundGradientColors!.map((x) => x)),
-        "assetPath": assetPath,
-        "isFullPortraitRightFacing": isFullPortraitRightFacing,
-        "isPlayableCharacter": isPlayableCharacter,
-        "isAvailableForTest": isAvailableForTest,
-        "isBaseContent": isBaseContent,
-        "role": role?.toJson(),
         "abilities": abilities == null ? [] : List<dynamic>.from(abilities!.map((x) => x.toJson())),
-        "voiceLine": voiceLine?.toJson(),
+        "fullPortrait": fullPortrait,
+        "background": background,
     };
 }
 
 class Ability {
-    Slot? slot;
-    String? displayName;
-    String? description;
-    String? displayIcon;
+    String? id;
+    SkillSlot? skillSlot;
+    String? skillName;
+    String? skillDescription;
+    String? skillIcon;
 
     Ability({
-        this.slot,
-        this.displayName,
-        this.description,
-        this.displayIcon,
+        this.id,
+        this.skillSlot,
+        this.skillName,
+        this.skillDescription,
+        this.skillIcon,
     });
 
     factory Ability.fromJson(Map<String, dynamic> json) => Ability(
-        slot: slotValues.map[json["slot"]]!,
-        displayName: json["displayName"],
-        description: json["description"],
-        displayIcon: json["displayIcon"],
+        id: json["_id"],
+        skillSlot: skillSlotValues.map[json["skillSlot"]],
+        skillName: json["skillName"],
+        skillDescription: json["skillDescription"],
+        skillIcon: json["skillIcon"],
     );
 
     Map<String, dynamic> toJson() => {
-        "slot": slotValues.reverse[slot],
-        "displayName": displayName,
-        "description": description,
-        "displayIcon": displayIcon,
+        "_id": id,
+        "skillSlot": skillSlotValues.reverse[skillSlot],
+        "skillName": skillName,
+        "skillDescription": skillDescription,
+        "skillIcon": skillIcon,
     };
 }
 
-enum Slot {
+enum SkillSlot {
     ABILITY1,
     ABILITY2,
     GRENADE,
-    PASSIVE,
     ULTIMATE
 }
 
-final slotValues = EnumValues({
-    "Ability1": Slot.ABILITY1,
-    "Ability2": Slot.ABILITY2,
-    "Grenade": Slot.GRENADE,
-    "Passive": Slot.PASSIVE,
-    "Ultimate": Slot.ULTIMATE
+final skillSlotValues = EnumValues({
+    "Ability1": SkillSlot.ABILITY1,
+    "Ability2": SkillSlot.ABILITY2,
+    "Grenade": SkillSlot.GRENADE,
+    "Ultimate": SkillSlot.ULTIMATE
 });
 
 class Role {
-    String? uuid;
-    DisplayName? displayName;
-    String? description;
-    String? displayIcon;
-    String? assetPath;
+    String? id;
+    RoleName? roleName;
+    String? roleDescription;
+    String? roleIcon;
 
     Role({
-        this.uuid,
-        this.displayName,
-        this.description,
-        this.displayIcon,
-        this.assetPath,
+        this.id,
+        this.roleName,
+        this.roleDescription,
+        this.roleIcon,
     });
 
     factory Role.fromJson(Map<String, dynamic> json) => Role(
-        uuid: json["uuid"],
-        displayName: displayNameValues.map[json["displayName"]]!,
-        description: json["description"],
-        displayIcon: json["displayIcon"],
-        assetPath: json["assetPath"],
+        id: json["_id"],
+        roleName: roleNameValues.map[json["roleName"]],
+        roleDescription: json["roleDescription"],
+        roleIcon: json["roleIcon"],
     );
 
     Map<String, dynamic> toJson() => {
-        "uuid": uuid,
-        "displayName": displayNameValues.reverse[displayName],
-        "description": description,
-        "displayIcon": displayIcon,
-        "assetPath": assetPath,
+        "_id": id,
+        "roleName": roleNameValues.reverse[roleName],
+        "roleDescription": roleDescription,
+        "roleIcon": roleIcon,
     };
 }
 
-enum DisplayName {
-    CONTROLLER,
+enum RoleName {
     DUELIST,
     INITIATOR,
     SENTINEL
 }
 
-final displayNameValues = EnumValues({
-    "Controller": DisplayName.CONTROLLER,
-    "Duelist": DisplayName.DUELIST,
-    "Initiator": DisplayName.INITIATOR,
-    "Sentinel": DisplayName.SENTINEL
+final roleNameValues = EnumValues({
+    "Duelist": RoleName.DUELIST,
+    "Initiator": RoleName.INITIATOR,
+    "Sentinel": RoleName.SENTINEL
 });
-
-class VoiceLine {
-    double? minDuration;
-    double? maxDuration;
-    List<MediaList>? mediaList;
-
-    VoiceLine({
-        this.minDuration,
-        this.maxDuration,
-        this.mediaList,
-    });
-
-    factory VoiceLine.fromJson(Map<String, dynamic> json) => VoiceLine(
-        minDuration: json["minDuration"]?.toDouble(),
-        maxDuration: json["maxDuration"]?.toDouble(),
-        mediaList: json["mediaList"] == null ? [] : List<MediaList>.from(json["mediaList"]!.map((x) => MediaList.fromJson(x))),
-    );
-
-    Map<String, dynamic> toJson() => {
-        "minDuration": minDuration,
-        "maxDuration": maxDuration,
-        "mediaList": mediaList == null ? [] : List<dynamic>.from(mediaList!.map((x) => x.toJson())),
-    };
-}
-
-class MediaList {
-    int? id;
-    String? wwise;
-    String? wave;
-
-    MediaList({
-        this.id,
-        this.wwise,
-        this.wave,
-    });
-
-    factory MediaList.fromJson(Map<String, dynamic> json) => MediaList(
-        id: json["id"],
-        wwise: json["wwise"],
-        wave: json["wave"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "wwise": wwise,
-        "wave": wave,
-    };
-}
 
 class EnumValues<T> {
     Map<String, T> map;

@@ -21,7 +21,7 @@ class Agent extends StatefulWidget {
 }
 
 class _AgentState extends State<Agent> {
-  Agentsdata? _data;
+  AgentsData? _data;
 
   var agentsName = [];
 
@@ -35,7 +35,7 @@ class _AgentState extends State<Agent> {
     var res = await get(url);
 
     setState(() {
-      _data = agentsdataFromJson(res.body);
+      _data = agentsDataFromJson(res.body);
     });
   }
 
@@ -81,7 +81,7 @@ class _AgentState extends State<Agent> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  '${agent.role?.displayName}',
+                  '${agent.role?.roleName}',
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ),
@@ -163,7 +163,7 @@ class _AgentState extends State<Agent> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                '${agent.abilities?[0].displayIcon}',
+                                '${agent.abilities?[0].skillIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -176,7 +176,7 @@ class _AgentState extends State<Agent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${agent.abilities?[0].displayName}',
+                                '${agent.abilities?[0].skillName}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -185,7 +185,7 @@ class _AgentState extends State<Agent> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
-                                    '     ${agent.abilities?[0].description}',
+                                    '     ${agent.abilities?[0].skillDescription}',
                                     style: TextStyle(
                                         color:
                                             Color.fromARGB(255, 85, 85, 85))),
@@ -208,7 +208,7 @@ class _AgentState extends State<Agent> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                '${agent.abilities?[1].displayIcon}',
+                                '${agent.abilities?[1].skillIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -221,7 +221,7 @@ class _AgentState extends State<Agent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${agent.abilities?[1].displayName}',
+                                '${agent.abilities?[1].skillName}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -230,7 +230,7 @@ class _AgentState extends State<Agent> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
-                                  '     ${agent.abilities?[1].description}',
+                                  '     ${agent.abilities?[1].skillDescription}',
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 85, 85, 85)),
                                 ),
@@ -253,7 +253,7 @@ class _AgentState extends State<Agent> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                '${agent.abilities?[2].displayIcon}',
+                                '${agent.abilities?[2].skillIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -266,7 +266,7 @@ class _AgentState extends State<Agent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${agent.abilities?[2].displayName}',
+                                '${agent.abilities?[2].skillName}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -275,7 +275,7 @@ class _AgentState extends State<Agent> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
-                                  '     ${agent.abilities?[2].description}',
+                                  '     ${agent.abilities?[2].skillDescription}',
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 85, 85, 85)),
                                 ),
@@ -297,7 +297,7 @@ class _AgentState extends State<Agent> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                '${agent.abilities?[3].displayIcon}',
+                                '${agent.abilities?[3].skillIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -310,7 +310,7 @@ class _AgentState extends State<Agent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${agent.abilities?[3].displayName}',
+                                '${agent.abilities?[3].skillName}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -319,7 +319,7 @@ class _AgentState extends State<Agent> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Text(
-                                  '     ${agent.abilities?[3].description}',
+                                  '     ${agent.abilities?[3].skillDescription}',
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 85, 85, 85)),
                                 ),

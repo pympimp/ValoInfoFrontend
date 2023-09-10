@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:firstflutter/screen/Agents.dart';
+import 'package:firstflutter/screen/News.dart';
 import 'package:firstflutter/screen/Weapons.dart';
 import 'package:firstflutter/screen/Maps.dart';
 import 'package:firstflutter/screen/All.dart';

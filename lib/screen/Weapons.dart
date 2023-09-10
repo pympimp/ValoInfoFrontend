@@ -36,7 +36,7 @@ void _onItemTapped(Datum weapon) {
   }
 
   Future<void> getData() async {
-    var url = Uri.parse('https://valorant-api.com/v1/weapons');
+    var url = Uri.parse('http://192.168.1.110:3000/weapons');
     var res = await get(url);
 
     setState(() {

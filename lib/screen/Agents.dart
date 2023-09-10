@@ -12,7 +12,7 @@ class Agents extends StatefulWidget {
 }
 
 class _AgentsState extends State<Agents> {
-  Agentsdata? _data;
+  AgentsData? _data;
 
   var agentsName = [];
 
@@ -30,11 +30,11 @@ class _AgentsState extends State<Agents> {
   }
 
   Future<void> getData() async {
-    var url = Uri.parse('https://valorant-api.com/v1/agents');
+    var url = Uri.parse('http://192.168.1.110:3000/agents');
     var res = await get(url);
 
     setState(() {
-      _data = agentsdataFromJson(res.body);
+      _data = agentsDataFromJson(res.body);
     });
   }
 
@@ -57,7 +57,7 @@ class _AgentsState extends State<Agents> {
                 padding: const EdgeInsets.all(8.0), // เพิ่ม padding ที่นี่
                 child: _buildAgentCard(firstData!),
               ),
-              SizedBox(width: 5), // ระยะห่างระหว่าง 2 Agent Card
+              const SizedBox(width: 5), // ระยะห่างระหว่าง 2 Agent Card
               if (secondData != null)
                 Padding(
                   padding: const EdgeInsets.all(8.0), // เพิ่ม padding ที่นี่
@@ -80,7 +80,7 @@ class _AgentsState extends State<Agents> {
             width: 165,
             height: 165,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [
                   Color.fromRGBO(212, 212, 212, 1), // สีเริ่มต้น
                   Colors.white, // สีสุดท้าย
@@ -93,7 +93,7 @@ class _AgentsState extends State<Agents> {
             child: Stack(
               children: [
                 Image.network(
-                  '${agent?.displayIcon}',
+                  '${agent.displayIcon}',
                   width: 180,
                   height: 180,
                   fit: BoxFit.cover,
@@ -102,9 +102,9 @@ class _AgentsState extends State<Agents> {
                   bottom: 5,
                   left: 5,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5),
+                      color: const Color.fromRGBO(255, 255, 255, 1).withOpacity(0.5),
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
@@ -114,9 +114,9 @@ class _AgentsState extends State<Agents> {
                       ],
                     ),
                     child: Text(
-                      '${agent?.displayName}',
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 68, 68, 68),
+                      '${agent.displayName}',
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 68, 68, 68),
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                       ),

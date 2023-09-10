@@ -89,28 +89,28 @@ class _WeaponState extends State<Weapon> {
                           children: [
                             Text('Fire Rate : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('${widget.weapon.weaponStats?.fireRate}', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStat?.fireRate}', style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Magazine Size : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('${widget.weapon.weaponStats?.magazineSize}', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStat?.magazineSize}', style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Equip Time : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('${widget.weapon.weaponStats?.equipTimeSeconds} s', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStat?.equipTimeSeconds} s', style: TextStyle(fontSize: 18))
                           ],
                         ),
                         Row(
                           children: [
                             Text('Reload Time : ',
                                 style: TextStyle(fontSize: 18)),
-                            Text('${widget.weapon.weaponStats?.reloadTimeSeconds} s', style: TextStyle(fontSize: 18))
+                            Text('${widget.weapon.weaponStat?.reloadTimeSeconds} s', style: TextStyle(fontSize: 18))
                           ],
                         ),
                       ],
@@ -158,19 +158,19 @@ class _WeaponState extends State<Weapon> {
                           Row(
                             children: [
                               Text('Head : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.first?.headDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.first.headDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Body : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.first?.bodyDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.first.bodyDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Leg : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.first?.legDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.first.legDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                           Padding(
@@ -184,19 +184,19 @@ class _WeaponState extends State<Weapon> {
                           Row(
                             children: [
                               Text('Head : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.last?.headDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.last.headDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Body : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.last?.bodyDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.last.bodyDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                           Row(
                             children: [
                               Text('Leg : ', style: TextStyle(fontSize: 18)),
-                              Text('${widget.weapon.weaponStats?.damageRanges?.last?.legDamage ?? 'N/A'}', style: TextStyle(fontSize: 17)),
+                              Text('${widget.weapon.damageRanges?.last.legDamage}', style: TextStyle(fontSize: 17)),
                             ],
                           ),
                         ],
