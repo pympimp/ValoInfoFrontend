@@ -29,7 +29,7 @@ class _AgentState extends State<Agent> {
     super.initState();
     getData();
   }
-  
+
   Future<void> getData() async {
     var url = Uri.parse('https://valorant-api.com/v1/agents');
     var res = await get(url);
@@ -38,9 +38,10 @@ class _AgentState extends State<Agent> {
       _data = agentsdataFromJson(res.body);
     });
   }
+
   @override
-Widget build(BuildContext context) {
-  final agent = widget.agent;
+  Widget build(BuildContext context) {
+    final agent = widget.agent;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(124, 57, 232, 1),
       extendBodyBehindAppBar: true,
@@ -56,10 +57,20 @@ Widget build(BuildContext context) {
           Stack(
             alignment: Alignment.bottomLeft,
             children: [
+              Positioned.fill(
+                child: Opacity(
+                  opacity:
+                      0.5, // ปรับค่า opacity ตามที่คุณต้องการ (ระหว่าง 0.0 ถึง 1.0)
+                  child: Image.network( 
+                    '${agent.background}' ?? '',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: Image.network(
-                  'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/fullportrait.png',
+                  '${agent.fullPortrait}',
                 ),
               ),
               Container(
@@ -70,19 +81,20 @@ Widget build(BuildContext context) {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'T',
+                  '${agent.role?.displayName}',
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ),
               Positioned(
-                left: 15, // ปรับตำแหน่งตามความต้องการ
-                bottom: 45, // ปรับตำแหน่งตามความต้องการ
+                left: 15,
+                bottom: 45,
                 child: Text(
-                  'T',
+                  '${agent.displayName}',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
@@ -106,12 +118,11 @@ Widget build(BuildContext context) {
                         Padding(
                           padding: EdgeInsets.only(left: 10),
                           child: Text(
-                            'DescriptionT',
+                            'Description',
                             style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 60, 22, 121)
-                            ),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 60, 22, 121)),
                           ),
                         ),
                       ],
@@ -120,7 +131,9 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.only(top: 10, left: 10),
                       child: Text(
                         '${agent.description}',
-                        style: TextStyle(fontSize: 15.5, color: Color.fromARGB(255, 85, 85, 85)),
+                        style: TextStyle(
+                            fontSize: 15.5,
+                            color: Color.fromARGB(255, 85, 85, 85)),
                       ),
                     ),
                     const Padding(
@@ -130,11 +143,9 @@ Widget build(BuildContext context) {
                           Text(
                             'Skill',
                             style: TextStyle(
-                            
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 61, 85, 5)
-                            ),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 61, 85, 5)),
                           ),
                         ],
                       ),
@@ -147,11 +158,12 @@ Widget build(BuildContext context) {
                           padding: const EdgeInsets.all(8.0),
                           child: CircleAvatar(
                             radius: 40,
-                            backgroundColor: const Color.fromRGBO(199, 244, 90, 1),
+                            backgroundColor:
+                                const Color.fromRGBO(199, 244, 90, 1),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability1/displayicon.png',
+                                '${agent.abilities?[0].displayIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -159,23 +171,24 @@ Widget build(BuildContext context) {
                             ),
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Wingman',
+                                '${agent.abilities?[0].displayName}',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 61, 85, 5)
-                                ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color.fromARGB(255, 61, 85, 5)),
                               ),
-                              Text(
-                                '     FIRE to send Wingman forward seeking enemies. Wingman unleashes a concussive blast toward the first enemy he sees.',
-                                style: TextStyle(
-                                color:Color.fromARGB(255, 85, 85, 85)
-                              )
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                    '     ${agent.abilities?[0].description}',
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 85, 85, 85))),
                               ),
                             ],
                           ),
@@ -190,11 +203,12 @@ Widget build(BuildContext context) {
                           padding: const EdgeInsets.all(8.0),
                           child: CircleAvatar(
                             radius: 40,
-                            backgroundColor: const Color.fromRGBO(199, 244, 90, 1),
+                            backgroundColor:
+                                const Color.fromRGBO(199, 244, 90, 1),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability2/displayicon.png',
+                                '${agent.abilities?[1].displayIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -202,23 +216,24 @@ Widget build(BuildContext context) {
                             ),
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Dizzy',
+                                '${agent.abilities?[1].displayName}',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 61, 85, 5)
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color.fromARGB(255, 61, 85, 5)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                  '     ${agent.abilities?[1].description}',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 85, 85, 85)),
                                 ),
-                              ),
-                              Text(
-                                '     FIRE to send Dizzy soaring forward through the air. Dizzy charges then unleashes plasma blasts at enemies in line of sight.',
-                                style: TextStyle(
-                                color:Color.fromARGB(255, 85, 85, 85)
-                              ),
                               ),
                             ],
                           ),
@@ -233,11 +248,12 @@ Widget build(BuildContext context) {
                           padding: const EdgeInsets.all(8.0),
                           child: CircleAvatar(
                             radius: 40,
-                            backgroundColor: const Color.fromRGBO(199, 244, 90, 1),
+                            backgroundColor:
+                                const Color.fromRGBO(199, 244, 90, 1),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.network(
-                                'https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/grenade/displayicon.png',
+                                '${agent.abilities?[2].displayIcon}',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -245,23 +261,68 @@ Widget build(BuildContext context) {
                             ),
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Mosh Pit',
+                                '${agent.abilities?[2].displayName}',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color.fromARGB(255, 61, 85, 5)
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color.fromARGB(255, 61, 85, 5)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                  '     ${agent.abilities?[2].description}',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 85, 85, 85)),
                                 ),
                               ),
-                              Text(
-                                '     FIRE to throw Mosh like a grenade. ALT FIRE to throw underhand. Upon landing Mosh duplicates across a large area then after a short delay explodes.',
-                              style: TextStyle(
-                                color:Color.fromARGB(255, 85, 85, 85)
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundColor:
+                                const Color.fromRGBO(199, 244, 90, 1),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(40),
+                              child: Image.network(
+                                '${agent.abilities?[3].displayIcon}',
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
                               ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${agent.abilities?[3].displayName}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: Color.fromARGB(255, 61, 85, 5)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Text(
+                                  '     ${agent.abilities?[3].description}',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 85, 85, 85)),
+                                ),
                               ),
                             ],
                           ),

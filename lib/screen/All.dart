@@ -139,16 +139,6 @@ class _AllState extends State<All> {
                       final agentInfo = AgentsUrlText[index];
                       //ใส่ ! ให้ข้อมูลเป็น Nullable ได้
                       return InkWell(
-                        //Link ไปยังหน้า Agent
-                        // onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => Agent(agent: agent),
-                        //     ),
-                        //   );
-                        // },
-
                         child: buildImageWithText(
                           agentInfo['url']!,
                           agentInfo['text']!,
