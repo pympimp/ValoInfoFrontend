@@ -50,15 +50,15 @@ class _NewState extends State<New> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Column(
-                children: [
-                  Text('${widget.news.title}'),
-                  Text('${widget.news.title}'),
-                ],
-              ),
-            )
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 8),
+            //   child: Column(
+            //     children: [
+            //       Text('${widget.news.title}'),
+            //       Text('${widget.news.title}'),
+            //     ],
+            //   ),
+            // )
             
           ],
         ),

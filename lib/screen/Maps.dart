@@ -31,7 +31,7 @@ class _MapsState extends State<Maps> {
   }
 
   Future<void> getData() async {
-    var url = Uri.parse('http://192.168.1.110:3000/maps');
+    var url = Uri.parse('http://10.100.12.8:3000/maps');
     var res = await get(url);
 
     setState(() {

@@ -23,22 +23,6 @@ class Agent extends StatefulWidget {
 class _AgentState extends State<Agent> {
   AgentsData? _data;
 
-  var agentsName = [];
-
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<void> getData() async {
-    var url = Uri.parse('https://valorant-api.com/v1/agents');
-    var res = await get(url);
-
-    setState(() {
-      _data = agentsDataFromJson(res.body);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final agent = widget.agent;

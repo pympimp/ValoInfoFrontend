@@ -31,7 +31,7 @@ class _NewsState extends State<News> {
   }
 
   Future<void> getData() async {
-    var url = Uri.parse('http://192.168.1.110:3000/news');
+    var url = Uri.parse('http://10.100.12.8:3000/news');
     var res = await get(url);
 
     setState(() {
