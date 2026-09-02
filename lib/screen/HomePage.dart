@@ -57,10 +57,9 @@ class _HomePageState extends State<HomePage> {
                     isSwitched = value;
                   });
                 },
-                //activeColor: Color.fromRGBO(111, 144, 30, 1),
                 activeColor: Color.fromRGBO(124, 57, 232, 1),
                 inactiveThumbColor: Color.fromRGBO(124, 57, 232, 1),
-                //activeTrackColor: Color.fromRGBO(199, 244, 90, 1),
+                
                 activeTrackColor: Color.fromRGBO(222, 213, 235, 1),
                 inactiveTrackColor: Color.fromRGBO(222, 213, 235, 1),
               ),
